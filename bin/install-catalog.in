@@ -66,23 +66,23 @@ case $1 in
 esac
 
 # Check that the super catalog can be created and changed and deleted
-if [ ! -w /etc/sgml ]
+if [ ! -w /@unixroot/etc/sgml ]
 then
-  echo "`basename $0`: unable to write in /etc/sgml." >&2
+  echo "`basename $0`: unable to write in /@unixroot/etc/sgml." >&2
   exit 2
 fi
 case $SGML_ACTION in
    addition)
-	if [ -e /etc/sgml/catalog -a ! -w /etc/sgml/catalog ]
+	if [ -e /@unixroot/etc/sgml/catalog -a ! -w /@unixroot/etc/sgml/catalog ]
 	then
-	  echo "`basename $0`: can not modify \"/etc/sgml/catalog\"." >&2
+	  echo "`basename $0`: can not modify \"/@unixroot/etc/sgml/catalog\"." >&2
 	  exit 2
 	fi
 	;;
    removal)
-	if [ ! -w /etc/sgml/catalog ]
+	if [ ! -w /@unixroot/etc/sgml/catalog ]
 	then
-	  echo "`basename $0`: can not modify \"/etc/sgml/catalog\"." >&2
+	  echo "`basename $0`: can not modify \"/@unixroot/etc/sgml/catalog\"." >&2
 	  exit 2
 	fi
 	;;
@@ -137,11 +137,11 @@ case $SGML_ACTION in
 	else
 	  echo "$SGML_POINTER \"$SGML_ORDINARY\"" >> "$SGML_CENTRALIZED"
 	fi
-	grep -q "$SGML_CENTRALIZED" /etc/sgml/catalog 2>/dev/null
+	grep -q "$SGML_CENTRALIZED" /@unixroot/etc/sgml/catalog 2>/dev/null
 	if [ $? -ne 0 ]
 	then
-	  echo "`basename $0`: addition of $SGML_CENTRALIZED in /etc/sgml/catalog"
-	  echo "$SGML_POINTER \"$SGML_CENTRALIZED\"" >> /etc/sgml/catalog
+	  echo "`basename $0`: addition of $SGML_CENTRALIZED in /@unixroot/etc/sgml/catalog"
+	  echo "$SGML_POINTER \"$SGML_CENTRALIZED\"" >> /@unixroot/etc/sgml/catalog
 	fi
 	;;
    removal)
@@ -156,9 +156,9 @@ case $SGML_ACTION in
 	if [ ! -s "$SGML_CENTRALIZED" ]
 	then
 	  rm "$SGML_CENTRALIZED"
-	  echo "`basename $0`: removal of $SGML_CENTRALIZED from /etc/sgml/catalog"
-          sed -e "\:$SGML_POINTER \"\\?$SGML_CENTRALIZED\"\\?:d" < /etc/sgml/catalog > /etc/sgml/catalog.new
-          mv /etc/sgml/catalog.new /etc/sgml/catalog
+	  echo "`basename $0`: removal of $SGML_CENTRALIZED from /@unixroot/etc/sgml/catalog"
+          sed -e "\:$SGML_POINTER \"\\?$SGML_CENTRALIZED\"\\?:d" < /@unixroot/etc/sgml/catalog > /@unixroot/etc/sgml/catalog.new
+          mv /@unixroot/etc/sgml/catalog.new /@unixroot/etc/sgml/catalog
 	fi
 	;;
 esac
