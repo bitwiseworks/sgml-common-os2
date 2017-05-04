@@ -1,0 +1,11 @@
+COPYING
+INSTALL
+Makefile.in
+aclocal.m4
+bin/Makefile.in
+config/Makefile.in
+configure
+doc/HTML/Makefile.in
+doc/Makefile.in
+install-sh
+missing
