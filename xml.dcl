@@ -1,4 +1,4 @@
-<!SGML -- SGML Declaration for XML --
+<!SGML -- SGML Declaration for valid XML documents --
      "ISO 8879:1986 (WWW)"
 
      CHARSET
@@ -15,11 +15,14 @@
                 32      95      32
                 127     1       UNUSED
                 128     32      UNUSED
-                160     55136   160
-                55296   2048    UNUSED  -- surrogates --
+             -- use this instead of the official declaration because SP only
+                supports 16-bit characters --
+                160     65374   160
+                65534   2       UNUSED 
+             -- 55296   2048    UNUSED
                 57344   8190    57344
-                65534   2       UNUSED  -- FFFE and FFFF --
-           --   65536   1048576 65536      SP only supports 16-bits characters --
+                65534   2       UNUSED
+                65536   1048576 65536 --
      CAPACITY NONE
 
      SCOPE DOCUMENT
@@ -151,11 +154,11 @@
                      VALUE NO
              EMPTYNRM YES
              IMPLYDEF
-                 ATTLIST YES
-                 DOCTYPE YES
-                 ELEMENT YES
-                 ENTITY YES
-                 NOTATION YES
+                 ATTLIST NO
+                 DOCTYPE NO
+                 ELEMENT NO
+                 ENTITY NO
+                 NOTATION NO
          LINK
              SIMPLE NO
              IMPLICIT NO
@@ -166,10 +169,11 @@
              FORMAL NO
              URN NO
              KEEPRSRE YES
-             VALIDITY TYPE -- TAG is not allowed by SP --
+             VALIDITY TYPE
              ENTITIES
                  REF ANY
                  INTEGRAL YES
      APPINFO NONE
-     SEEALSO "ISO 8879//NOTATION Application Requirements for XML//EN"
+     SEEALSO "ISO 8879:1986//NOTATION
+             Extensible Markup Language (XML) 1.0//EN"
 >
