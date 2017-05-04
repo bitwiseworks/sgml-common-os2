@@ -13,3 +13,4 @@ doc/man/Makefile.in
 doc/refentry/Makefile.in
 sgml-iso-entities/Makefile.in
 xml-iso-entities/Makefile.in
+autom4te.cache
